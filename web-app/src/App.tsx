@@ -1,37 +1,30 @@
-import {ChangeEvent, Fragment, useState} from 'react'
-import './App.css'
-import {Button, Stack, TextField} from "@mui/material";
+import {Fragment} from 'react'
+import {Container} from "@mui/material";
+import NoLoginHeader from "./components/headers/nologin/NoLoginHeader.tsx";
+import Home from "./components/home/Home.tsx";
+import Login from "./components/login/Login.tsx";
+import {Route, Routes} from "react-router-dom";
+
 
 function App() {
-    const [localDate, setLocalDate] = useState<string>('');
-
-    const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
-        setLocalDate(event.target.value);
-    }
-
-    const onSubmitHandler = () => {
-        console.log(localDate);
-    }
-
 
     return (
         <Fragment>
-            <Stack direction={"column"} spacing={4}>
-                <TextField
-                    value={localDate}
-                    variant={"outlined"}
-                    type={"date"}
-                    fullWidth={true}
-                    onChange={onChangeHandler}
-                />
+            <Container maxWidth={"lg"}>
+                <NoLoginHeader/>
+                <Routes>
+                    <Route
+                        path={''}
+                        element={<Home/>}/>
+                    <Route
+                        path={'/home'}
+                        element={<Home/>}/>
 
-                <Button variant={"outlined"}
-                        type={"button"}
-                        color={"primary"}
-                        onClick={onSubmitHandler}
-                >submit</Button>
-
-            </Stack>
+                    <Route
+                        path={'/login'}
+                        element={<Login/>}/>
+                </Routes>
+            </Container>
         </Fragment>
     )
 }
