@@ -15,6 +15,12 @@ const NoLoginHeader = () => {
                                 Home
                             </Typography>
                         </NavLink>
+                        <NavLink style={{ textDecoration: "none"}} to={"/users"}>
+                            <Typography color={"white"}
+                                        variant={"body2"}>
+                                Users
+                            </Typography>
+                        </NavLink>
                         <NavLink style={{ textDecoration: "none"}} to={"/login"}>
                             <Typography color={"white"}
                                         variant={"body2"}>
